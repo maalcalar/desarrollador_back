@@ -1,0 +1,11 @@
+{
+  "name": "desarrollador_back",
+  "version": "1.0.0",
+  "description": "Back End para el ejercicio del puesto de Desarrollador en Entel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "miguel alcala",
+  "license": "ISC"
+}
