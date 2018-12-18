@@ -1,7 +1,7 @@
 var mysql = require("mysql"),
 	opciones = {
 		user: "root",
-		password: "46647913",
+		password: "mysql", //mysql //46647913
 		database: "db_desarrollador",
 		host: "localhost",
 		port: 3306

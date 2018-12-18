@@ -45,6 +45,10 @@ app
 							objd[indd].agregador = sresp.resp[0];
 						});
 
+						Sitio.get({id: d.sitio}, null, function(sresp){
+							objd[indd].sitio = sresp.resp[0];
+						});
+
 						if(indd == (objd.length - 1))
 						{
 							Tipo_servicio.get({id: r.tipo_servicio}, null, function(tsresp){
@@ -58,10 +62,36 @@ app
 						}
 					});
 				});
+			});
+		});
+});
 
-				
+app
+	.get('/servicios/listado_agregadores', (req, res) => {
+	var response;
 
-				
+	Servicios
+		.listado_agregadores(null, null, function(resp){
+			response = resp.resp;
+
+			response.forEach(function(r, ind, obj){
+				Datafill.get2({agregador: r.agregador}, null, function(dresp){
+					obj[ind].datafill = dresp.resp;
+
+					obj[ind].datafill.forEach(function(d, indd, objd){
+						Idu.get({id: d.idu}, null, function(iresp){
+							objd[indd].idu = (iresp.resp[0])? iresp.resp[0] : {nombre: ''} ;
+
+							if(indd == (objd.length - 1))
+							{
+								if(ind == (obj.length - 1))
+								{
+									res.json({resp: response});
+								}
+							}
+						});
+					});
+				});
 			});
 		});
 });
